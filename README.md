@@ -18,6 +18,7 @@
 ## 📁 Project Structure
 
 Simon_Game/
+
 ├── node_modules             → Project dependencies 
 ├── public/                  → Static Files (HTML, CSS, JavaScript) 
 ├── views/                   → EJS Files (Backend)  
