@@ -18,11 +18,14 @@
 ## 📁 Project Structure
 
 Simon_Game/
-├── Public/                  → Static Files (HTML, CSS, JavaScript) 
-├── Views/                   → EJS Files (Backend)  
+├── node_modules             → Project dependencies 
+├── public/                  → Static Files (HTML, CSS, JavaScript) 
+├── views/                   → EJS Files (Backend)  
+├── README.md                → Project documentation  
+├── index.js                 → Server
 ├── package.json             → Project Metadata  
-├── package-lock.json        → Auto-generated lockfile for consistent installs  
-└── README.md          → Project documentation  
+└── package-lock.json        → Auto-generated lockfile for consistent installs  
+
 
 ---
 
