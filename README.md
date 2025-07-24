@@ -1,74 +1,52 @@
-project:
-  name: "Quizzers 🎯"
-  description: >
-    Quizzers is a full-stack quiz web application built using Node.js, Express.js, EJS, and PostgreSQL. 
-    Users can take interactive quizzes, view scores, and enjoy a responsive UI. Server-side rendered with EJS.
-  author: "Shivaansh Sharma"
-  repository: "https://github.com/Shivaansh-Sharma/Quizzers"
-  license: "MIT"
-  version: "1.0.0"
-  emoji: "🧠📊💡"
+# 🎮 Quizzers
 
-tech_stack:
-  backend: "Node.js + Express.js 🚀"
-  frontend: "EJS + HTML + CSS + JavaScript 🎨"
-  database: "PostgreSQL 🐘"
-  deployment: "Render / Railway ☁️"
+**Quizzers** is a full-stack quiz web application built using **Node.js**, **Express.js**, **EJS**, and **PostgreSQL**. It offers a smooth and responsive user experience for taking quizzes, getting real-time feedback, and tracking scores. The project follows a clean modular structure and is deployment-ready.
 
-features:
-  - "🎯 Interactive quizzes with instant feedback"
-  - "📊 Score tracking and display"
-  - "📱 Fully responsive user interface"
-  - "🌐 Server-side rendering using EJS"
-  - "🧩 Modular code structure for scalability"
+🔗 Live Demo: Soon
 
-structure:
-  folders:
-    - "📂 public/ - Static files (CSS, JS, images)"
-    - "📂 views/ - EJS templates"
-    - "📂 server/ - Backend logic and routing"
-    - "📦 node_modules/ - Node.js dependencies"
-    - "📄 package.json - Project metadata and scripts"
-    - "🎞️ video.mp4 - Demo or background video (optional)"
-    - "📘 README.md - Project documentation"
+---
 
-setup_instructions:
-  steps:
-    - "🔁 Clone the repository: git clone https://github.com/Shivaansh-Sharma/Quizzers.git"
-    - "📂 Navigate into project folder: cd Quizzers"
-    - "📦 Install dependencies: npm install"
-    - "🛠️ Configure PostgreSQL database and update .env or config:"
-    - |
-      DB_USER=your_username
-      DB_PASSWORD=your_password
-      DB_HOST=localhost
-      DB_PORT=5432
-      DB_NAME=quizzers_db
-    - "▶️ Run the server: node server/app.js"
-    - "🌐 Visit the app: http://localhost:3000"
+## 🛠️ Tech Stack
 
-deployment:
-  platforms:
-    - "Render 🌍"
-    - "Railway 🚆"
-  notes:
-    - "Provision PostgreSQL database instance"
-    - "Update environment variables for production"
-    - "Enable web service and static file hosting"
+- **Backend**: Node.js, Express.js ⚙️  
+- **Frontend**: EJS, HTML, CSS, JavaScript 🎨  
+- **Database**: PostgreSQL 🐘
 
-demo:
-  media: "🎥 video.mp4 (Add your demo video here)"
-  screenshots: "🖼️ (Add screenshot paths or links here)"
+---
 
-contributing:
-  message: "🤝 Contributions are welcome! Fork the repo and create a pull request."
 
-contact:
-  github: "https://github.com/Shivaansh-Sharma"
-  email: "📬 (Add your email if you want)"
+## 📁 Project Structure
 
-license:
-  type: "MIT"
-  link: "https://github.com/Shivaansh-Sharma/Quizzers/blob/main/LICENSE"
+Simon_Game/
+├── Public/            → Static Files (HTML, CSS, JavaScript) 
+├── Views/             → EJS Files (Backend)  
+├── package.json       → Project Metadata  
+├── sounds/            → Sound effects for each button  
+└── README.md          → Project documentation  
 
-footer: "Made with ❤️ by Shivaansh Sharma"
+---
+
+## ✨ Features
+
+- 🎯 Interactive quizzes with real-time validation  
+- 📊 Score tracking and result display  
+- 📱 Mobile-responsive user interface  
+- 🌐 Server-side rendering with EJS  
+- 📂 Clean and organized codebase 
+
+---
+
+
+
+## 👨‍💻 Author
+
+**Shivaansh Sharma**  - Frontend 
+GitHub: https://github.com/Shivaansh-Sharma
+
+**Mehul Kala** - Backend 
+GitHub: https://github.com/mehulkala
+---
+
+## ⭐ Support
+
+If you liked this project, don’t forget to give it a ⭐ on GitHub!
