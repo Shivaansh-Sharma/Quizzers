@@ -19,8 +19,8 @@
 
 Simon_Game/
 
-├── node_modules             → Project dependencies 
-├── public/                  → Static Files (HTML, CSS, JavaScript) 
+├── node_modules             → Project dependencies  
+├── public/                  → Static Files (HTML, CSS, JavaScript)  
 ├── views/                   → EJS Files (Backend)  
 ├── README.md                → Project documentation  
 ├── index.js                 → Server
