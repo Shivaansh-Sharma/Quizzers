@@ -22,7 +22,8 @@ Simon_Game/
 ├── node_modules             → Project dependencies  
 ├── public/                  → Static Files (HTML, CSS, JavaScript)  
 ├── views/                   → EJS Files (Backend)  
-├── README.md                → Project documentation  
+├── README.md                → Project documentation 
+├── demo_video.mp4           → Project Demonstration Video
 ├── index.js                 → Server
 ├── package.json             → Project Metadata  
 └── package-lock.json        → Auto-generated lockfile for consistent installs  
