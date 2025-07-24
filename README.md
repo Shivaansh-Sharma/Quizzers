@@ -18,10 +18,10 @@
 ## 📁 Project Structure
 
 Simon_Game/
-├── Public/            → Static Files (HTML, CSS, JavaScript) 
-├── Views/             → EJS Files (Backend)  
-├── package.json       → Project Metadata  
-├── sounds/            → Sound effects for each button  
+├── Public/                  → Static Files (HTML, CSS, JavaScript) 
+├── Views/                   → EJS Files (Backend)  
+├── package.json             → Project Metadata  
+├── package-lock.json        → Auto-generated lockfile for consistent installs  
 └── README.md          → Project documentation  
 
 ---
