@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Create Quiz</h1>
+  </header>
+  <main>
+    <!-- Quiz Details Section -->
+    <section id="quiz-details-container">
+      <h2>Quiz Details</h2>
+      <form id="quiz-details-form">
+        <label for="quiz-name">Quiz Name:</label>
+        <input type="text" id="quiz-name" name="quiz-name" required>
+
+        <label for="quiz-subject">Subject:</label>
+        <input type="text" id="quiz-subject" name="quiz-subject" required>
+
+        <!-- Quiz Type as Switch -->
+        <div class="switch-container">
+          <span>Public</span>
+          <label class="switch">
+            <input type="checkbox" id="quiz-type-switch">
+            <span class="slider"></span>
+          </label>
+          <span>Private</span>
+        </div>
+      </form>
+    </section>
+
+    <!-- Question Creation Section -->
+    <section id="question-creation-container">
+      <h2>Add Questions</h2>
+      <form id="question-form">
+        <label for="question">Question:</label>
+        <input type="text" id="question" name="question" required>
+
+        <!-- Question Type as Switch -->
+        <div class="switch-container">
+          <span>Short Answer</span>
+          <label class="switch">
+            <input type="checkbox" id="question-type-switch">
+            <span class="slider"></span>
+          </label>
+          <span>MCQ</span>
+        </div>
+
+        <!-- Dynamic Options for MCQ -->
+        <div id="mcq-options-container" style="display: none;">
+          <h3>Options</h3>
+          <div id="options-list"></div>
+          <button type="button" id="add-option-button">Add Option</button>
+          <br>
+        </div>
+
+        <label for="answer">Correct Answer:</label>
+        <input type="text" id="answer" name="answer" required>
+        <button type="button" id="add-question-button">Add Question</button>
+      </form>
+    </section>
+    <form action="/teacher-dashboard" method="post">
+      <button id="create-quiz-button">Create Quiz</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const mcqOptionsContainer = document.getElementById('mcq-options-container');
+    const optionsList = document.getElementById('options-list');
+    const addOptionButton = document.getElementById('add-option-button');
+    const addQuestionButton = document.getElementById('add-question-button');
+    const createQuizButton = document.getElementById('create-quiz-button');
+    const quizNameInput = document.getElementById('quiz-name');
+    const quizSubjectInput = document.getElementById('quiz-subject');
+    const quizTypeSwitch = document.getElementById('quiz-type-switch');
+    const questionTypeSwitch = document.getElementById('question-type-switch');
+    const questionInput = document.getElementById('question');
+    const answerInput = document.getElementById('answer');
+
+    const quiz = {
+      name: '',
+      subject: '',
+      type: '',
+      questions: []
+    };
+
+    // Toggle MCQ options visibility based on switch state
+    questionTypeSwitch.addEventListener('change', () => {
+      mcqOptionsContainer.style.display = questionTypeSwitch.checked ? 'block' : 'none';
+      if (!questionTypeSwitch.checked) optionsList.innerHTML = '';
+    });
+
+    // Add Options for MCQ with Remove functionality
+    addOptionButton.addEventListener('click', () => {
+      const optionCount = optionsList.children.length + 1;
+
+      // Create option input and remove button
+      const optionDiv = document.createElement('div');
+      optionDiv.innerHTML = `
+        <label for="option-${optionCount}">Option ${optionCount}:</label>
+        <input type="text" id="option-${optionCount}" name="option-${optionCount}" required>
+        <br>
+        <button type="button" class="remove-option-button">Remove</button>
+        <br>
+      `;
+
+      // Add functionality to the remove button
+      const removeButton = optionDiv.querySelector('.remove-option-button');
+      removeButton.addEventListener('click', () => {
+        optionsList.removeChild(optionDiv);
+      });
+
+      optionsList.appendChild(optionDiv);
+    });
+
+    // Add Question
+    addQuestionButton.addEventListener('click', () => {
+      if (!questionInput.value || !answerInput.value) {
+        alert('Please fill in both the question and the correct answer.');
+        return;
+      }
+
+      const newQuestion = {
+        question: questionInput.value,
+        type: questionTypeSwitch.checked ? 'mcq' : 'short',
+        correctAnswer: answerInput.value,
+        options: []
+      };
+
+      if (questionTypeSwitch.checked) {
+        const optionInputs = optionsList.querySelectorAll('input');
+        optionInputs.forEach(input => newQuestion.options.push(input.value));
+      }
+
+      quiz.questions.push(newQuestion);
+
+      questionInput.value = '';
+      answerInput.value = '';
+      optionsList.innerHTML = '';
+      mcqOptionsContainer.style.display = 'none';
+      questionTypeSwitch.checked = false;
+
+      alert('Question added successfully!');
+    });
+
+    // Create Quiz
+    createQuizButton.addEventListener('click', () => {
+      if (!quizNameInput.value || !quizSubjectInput.value) {
+        alert('Please fill in the quiz name and subject.');
+        return;
+      }
+
+      quiz.name = quizNameInput.value;
+      quiz.subject = quizSubjectInput.value;
+      quiz.type = quizTypeSwitch.checked ? 'private':'public' ;
+
+      fetch('/quizzes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(quiz)
+      })
+      .then(response => response.json())
+      .then(data => console.log('Success:', data))
+      .catch(error => console.error('Error:', error));
+
+      console.log('Quiz created:', quiz);
+      alert(`Quiz ${quiz.name} created with ${quiz.questions.length} question(s)!`);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Quiz Results - Quizzers</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Quiz Results</h1>
+    <nav>
+      <ul>
+        <li>
+          <form action="/teacher-dashboard" method="post">
+            <button type="submit" name="teacher-dashboard" value="<%=teacher_id%>">
+              Dashboard
+            </button>
+          </form>
+        </li>
+        <li>
+          <form action="/teacher-quiz-create" method = "post">
+            <button type = "submit" name="quiz-create" >
+              Create New Quiz
+            </button>
+          </form>
+        </li>
+        <li>
+          <form action="/teacher-view-quizzes" method="post">
+            <button type="submit" name="myquizzes" value="<%=teacher_id%>">View My Quizzes</button>
+          </form>
+        </li>
+        <li>
+          <form action="/logout" method="post">
+            <button type="submit" name="logout">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="results-section">
+      <%if(all_results.rows.length===0){%>
+        <h2>No attempts done yet</h2>
+      <%}else{%>
+      <%for(var j=0; j<quiz_info.rows.length; j++){%>
+      <h2>Results for: <span id="quiz-title"><%=quiz_info.rows[j].quiz_name%></span></h2>
+      <%if(quiz_info.rows[j].quiz_type_private){%>
+      <h3>Quiz Type: Private</h3>
+      <%}else{%>
+      <h3>Quiz Type: Public</h3>
+      <%}%>
+      <h3>Subject: <%=quiz_info.rows[j].subject%>  <br>  Reviews: <%=quiz_info.rows[j].reviews%> <br>  Total Attempts: <%=quiz_info.rows[j].total_attempts%></h3>
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Age</th>
+            <th>Accuracy</th>
+            <th>Correct Answers</th>
+            <th>Total Questions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example entries -->
+
+            <%for(var i=0; i<all_results.rows.length; i++){%>
+                <%if(quiz_info.rows[j].id===all_results.rows[i].quiz_id){%>
+                <tr>
+                  <td><%=all_results.rows[i].name%></td>
+                  <td><%=all_results.rows[i].age%></td>
+                  <td><%=all_results.rows[i].accuracy * 100%></td>
+                  <td><%=all_results.rows[i].correct_answers%></td>
+                  <td><%=all_results.rows[i].total_questions%></td>
+                </tr>  
+                <%}%>
+            <%}%>
+          
+        </tbody>
+      </table>
+      <br />
+      <%}%>
+      <%}%>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+
+  <!-- <script>
+    // Placeholder for dynamic results
+    document.addEventListener('DOMContentLoaded', function() {
+      const quizTitle = "Math Quiz 1"; // Replace with dynamic data
+      document.getElementById('quiz-title').textContent = quizTitle;
+
+      // Dynamic result entries could be fetched and appended to the table here
+    });
+  </script> -->
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Page</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Quiz</h1>
+  </header>
+  <main class="container">
+    <form action="/quiz-submit" method="post" class="signup-container">
+      <section id="quiz-container" style="max-height: 400px; overflow-y: auto;">
+        <h2>Questions</h2>
+
+        <!-- Student's Name -->
+        <div class="question">
+          <label for="student-name">Name:</label>
+          <input type="text" id="student-name" name="student-name" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Student's Age -->
+        <div class="question">
+          <label for="student-age">Age:</label>
+          <input type="number" id="student-age" name="student-age" placeholder="Enter your age" min="1" required>
+        </div>
+
+        <!-- Quiz Questions -->
+        <div class="question">
+          <% if (locals.quiz && locals.questions) { %>
+            <% for (var i = 0; i < locals.questions.length; i++) { %>
+              <fieldset class="question">
+                <legend class="question-legend"><%= questions[i]["question"] %></legend>
+                <% if (questions[i]["type"] === "MCQ") { %>
+                  <% questions[i]["options"].forEach(option => { %>
+                    <label>
+                      <input type="radio" name="question<%= i+1 %>" value="<%= option %>" required>
+                      <%= option %>
+                    </label>
+                    <br>
+                  <% }) %>
+                <% } else { %>
+                  <!-- Short Answer Input -->
+                  <label for="question<%= i+1 %>">Your Answer:</label>
+                  <input
+                    type="text"
+                    id="question<%= i+1 %>"
+                    name="question<%= i+1 %>"
+                    placeholder="Type your answer here"
+                    required
+                  >
+                  <br>
+                <% } %>
+              </fieldset>
+            <% } %>
+          <% } else { %>
+            <p class="error">There was an error loading the quiz! Please retry.</p>
+          <% } %>
+        </div>
+
+        <!-- Student's Rating -->
+        <div class="question">
+          <label for="quiz-rating">Rate this quiz (1-10):</label>
+          <input
+            type="number"
+            id="quiz-rating"
+            name="quiz-rating"
+            placeholder="Enter your rating"
+            min="1"
+            max="10"
+            required
+          >
+        </div>
+      </section>
+      <button id="submit-quiz">Submit</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+</body>
+</html>

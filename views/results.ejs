@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <header>
+    <h1>Quiz Results</h1>
+  </header>
+  <main>
+    <section id="results-container">
+      <h2>Results Summary</h2>
+      <p>Score: <%=score%>/<%=total%></p>
+      <p>Accuracy: <%=accuracy*100%>%</p>
+      <!-- <p>Rank: 3/50</p> -->
+      
+      <br />
+      <h3>Correct Answers</h3>
+      
+      <%if (correct_answers.length===0){%>
+        <p>You didn't get any Question Right. Study harder next time!</p>
+      <%}else{%>
+        <%for(var i=0; i<correct_answers.length; i++){%>
+          <p>Question. <%=correct_questions[i]%> -> Answer. <%=correct_answers[i]%> </p>
+        <%}%>
+      <%}%>
+      <br />
+      <h3>Wrong Answers</h3>
+      <%if(wrong_answers.length===0){%>
+        <p>No Wrong Questions. Keep it Up!</p>
+      <%}else{%>
+        <%for(var i=0; i<wrong_answers.length; i++){%>
+          <p>Question. <%=wrong_questions[i]%> -> Answer. <%=wrong_answers[i]%> </p>
+        <%}%>
+      <%}%>
+    </section>
+    <form action="/result-done" method="post">
+      <button type="submit">DONE</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+</body>
+</html>

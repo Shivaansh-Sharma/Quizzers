@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Quizzes - Quizzers</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>My Quizzes</h1>
+    <nav>
+      <ul>
+        <li>
+          <form action="/teacher-dashboard" method="post">
+            <button type="submit" name="teacher-dashboard" value="<%=teacher_id%>">
+              Dashboard
+            </button>
+          </form>
+        </li>
+        <li>
+          <form action="/teacher-quiz-create" method = "post">
+            <button type = "submit" name="quiz-create" >
+              Create New Quiz
+            </button>
+          </form>
+        </li>
+        <li>
+          <form action="/teacher-view-results" method="post">
+            <button type="submit" name="myresults" value="<%=teacher_id%>">View Quiz Results</button>
+          </form>
+        </li>
+        <li>
+          <form action="/logout" method="post">
+            <button type="submit" name="logout">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="quizzes">
+      <h2>All Quizzes</h2>
+      <ul id="quiz-list">
+        <!-- Example quiz entries with average rating -->
+        <%if(view_quiz.rows.length===0){%>
+            <h3>You currently haven't made any quiz. Click on the Create Quiz Button to create one.</h3>
+        <%}else{%>   
+         <%for(var i=0; i<view_quiz.rows.length; i++){%>
+          <%var visibility;
+          if(view_quiz.rows[i].quiz_type_private){
+            visibility = "Private";
+          }else{
+            visibility = "Public";
+          }%>
+          <li>
+            <h3><%=view_quiz.rows[i].quiz_name%></h3>
+            <p>Visibility: <%=visibility%></p>
+            <p>Average Rating: <span class="quiz-rating" data-quiz-id="1"><%=view_quiz.rows[i].reviews%></span></p>
+            <!-- <form action="/edit-quiz" method="post">
+              <button type="submit" name="quiz-code" value="<%=view_quiz.rows[i].id%>">Edit Quiz</button>
+            </form> -->
+            <form action="/delete-quiz" method="post">
+              <button type="submit" name="quiz-code" value="<%=view_quiz.rows[i].id%>">Delete Quiz</button>
+            </form>
+          </li>
+          <br />
+         <%}%>
+        <%}%> 
+        <!-- <li>
+          <h3>Math Quiz 1</h3>
+          <p>Status: Active</p>
+          <p>Average Rating: <span class="quiz-rating" data-quiz-id="1">4.5</span></p>
+          <a href="teacher-view-results.html">View Results</a> |
+          <a href="teacher-edit-quiz.html">Edit Quiz</a> |
+          <button class="delete-quiz">Delete Quiz</button>
+        </li>
+        <li>
+          <h3>Science Quiz</h3>
+          <p>Status: Closed</p>
+          <p>Average Rating: <span class="quiz-rating" data-quiz-id="2">3.8</span></p>
+          <a href="teacher-view-results.html">View Results</a> |
+          <a href="teacher-edit-quiz.html">Edit Quiz</a> |
+          <button class="delete-quiz">Delete Quiz</button>
+        </li> -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Placeholder for dynamically fetching average ratings (simulate backend call)
+    // const quizRatings = {
+    //   1: 4.5, // Example average rating for Math Quiz 1
+    //   2: 3.8  // Example average rating for Science Quiz
+    // };
+
+    // // Update average ratings dynamically
+    // document.querySelectorAll('.quiz-rating').forEach(ratingSpan => {
+    //   const quizId = ratingSpan.getAttribute('data-quiz-id');
+    //   ratingSpan.textContent = quizRatings[quizId] || 'N/A';
+    // });
+
+    // Handle delete quiz action
+    const deleteButtons = document.querySelectorAll('.delete-quiz');
+
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        if (confirm('Are you sure you want to delete this quiz?')) {
+          // Placeholder alert for deletion logic
+          alert('Quiz deleted.');
+          // Logic to send a request to the backend to delete the quiz
+          const listItem = this.parentElement;
+          listItem.remove(); // Temporarily remove the quiz from the DOM
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Quiz - Quizzers</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Edit Quiz</h1>
+    <nav>
+      <ul>
+        <li><a href="teacher-dashboard.html">Dashboard</a></li>
+        <li><a href="teacher-view-quizzes.html">View My Quizzes</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="edit-quiz-section">
+      <h2>Edit Quiz Details</h2>
+      <form id="edit-quiz-form">
+        <!-- Quiz Title -->
+        <label for="quiz-title">Quiz Title:</label>
+        <input type="text" id="quiz-title" name="quiz-title" value="Math Quiz 1" required>
+
+        <!-- Quiz Description -->
+        <label for="quiz-description">Quiz Description:</label>
+        <textarea id="quiz-description" name="quiz-description" rows="4" required>Basic mathematics quiz covering algebra and arithmetic.</textarea>
+
+        <!-- Quiz Questions -->
+        <div id="questions-section">
+          <h3>Edit Questions</h3>
+          <div class="question">
+            <label for="question-1">Question 1:</label>
+            <input type="text" id="question-1" name="question-1" value="What is 2 + 2?" required>
+
+            <label for="answer-1">Correct Answer:</label>
+            <input type="text" id="answer-1" name="answer-1" value="4" required>
+
+            <label for="options-1">Options (comma-separated):</label>
+            <input type="text" id="options-1" name="options-1" value="2, 3, 4, 5" required>
+          </div>
+
+          <div class="question">
+            <label for="question-2">Question 2:</label>
+            <input type="text" id="question-2" name="question-2" value="What is 3 * 3?" required>
+
+            <label for="answer-2">Correct Answer:</label>
+            <input type="text" id="answer-2" name="answer-2" value="9" required>
+
+            <label for="options-2">Options (comma-separated):</label>
+            <input type="text" id="options-2" name="options-2" value="6, 7, 8, 9" required>
+          </div>
+        </div>
+
+        <!-- Add New Question -->
+        <button type="button" id="add-question">Add New Question</button>
+
+        <!-- Save Changes -->
+        <button type="submit" id="save-changes">Save Changes</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('add-question').addEventListener('click', function() {
+      const questionNumber = document.querySelectorAll('.question').length + 1;
+
+      const questionDiv = document.createElement('div');
+      questionDiv.className = 'question';
+
+      questionDiv.innerHTML = `
+        <label for="question-${questionNumber}">Question ${questionNumber}:</label>
+        <input type="text" id="question-${questionNumber}" name="question-${questionNumber}" required>
+
+        <label for="answer-${questionNumber}">Correct Answer:</label>
+        <input type="text" id="answer-${questionNumber}" name="answer-${questionNumber}" required>
+
+        <label for="options-${questionNumber}">Options (comma-separated):</label>
+        <input type="text" id="options-${questionNumber}" name="options-${questionNumber}" required>
+      `;
+
+      document.getElementById('questions-section').appendChild(questionDiv);
+    });
+
+    document.getElementById('edit-quiz-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Quiz changes have been saved.');
+      // Add backend logic to save the quiz details
+    });
+  </script>
+</body>
+</html>

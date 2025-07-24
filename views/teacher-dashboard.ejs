@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard - Quizzers</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Teacher Dashboard</h1>
+    <nav>
+      <ul>
+        <li>
+          <form action="/teacher-quiz-create" method="post">
+            <button type="submit" name="quiz-create">
+              Create New Quiz
+            </button>
+          </form>
+        </li>
+        <li>
+          <form action="/teacher-view-quizzes" method="post">
+            <button type="submit" name="myquizzes" value="<%=teacher_id%>">My Quizzes</button>
+          </form>
+        </li>
+        <li>
+          <form action="/teacher-view-results" method="post">
+            <button type="submit" name="myresults" value="<%=teacher_id%>">View Quiz Results</button>
+          </form>
+        </li>
+        <li>
+          <form action="/logout" method="post">
+            <button type="submit" name="logout">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="welcome">
+      <h2>Welcome!</h2>
+      <% var total_rating = 0, count = 0; %>
+      <% for (var i = 0; i < all_quizzes.rows.length; i++) { %>
+        <% if (all_quizzes.rows[i].reviews != 0) { %>
+          <% total_rating = total_rating + all_quizzes.rows[i].reviews; %>
+          <% count++; %>
+        <% } %>
+      <% } %>
+      <% var average_rating;
+      if (count === 0) {
+        average_rating = "You don't have any attempts yet or you haven't created any quiz for Attempting.";
+      } else {
+        average_rating = total_rating / count;
+      } %>
+      <p>Average Rating of Your Quizzes: <span id="average-rating"><%= average_rating %></span></p>
+    </section>
+
+    <section id="recent-quizzes">
+      <h3>Recent Quizzes</h3>
+      <ul>
+        <table id="quizzes-table">
+          <thead>
+            <tr>
+              <th>Quiz Name</th>
+              <th>Code</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% var len = all_quizzes.rows.length, visibility; %>
+            <% if (len === 0) { %>
+              <p>You haven't made any quizzes yet! Click on the create quiz button to create one.</p>
+            <% } else { %>
+              <% if (len < 3) { %>
+                <% all_quizzes.rows.forEach(quiz => { %>
+                  <% if (quiz.quiz_type_private) {
+                    visibility = "Private";
+                  } else {
+                    visibility = "Public";
+                  } %>
+                  <tr>
+                    <td><%= quiz.quiz_name %></td>
+                    <td><%= quiz.id %></td>
+                    <td><%= visibility %></td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <% for (var i = len - 1; i > len - 4; i--) { %>
+                  <% if (all_quizzes.rows[i].quiz_type_private) {
+                    visibility = "Private";
+                  } else {
+                    visibility = "Public";
+                  } %>
+                  <tr>
+                    <td><%= all_quizzes.rows[i].quiz_name %></td>
+                    <td><%= all_quizzes.rows[i].id %></td>
+                    <td><%= visibility %></td>
+                  </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </ul>
+    </section>
+
+    <section id="quiz-statistics">
+      <h3>Quiz Statistics</h3>
+      <div id="statistics">
+        <p>Total Quizzes Created: <%= total_quiz_created %></p>
+        <% var sum = 0; %>
+        <% for (var i = 0; i < all_quizzes.rows.length; i++) { %>
+          <% sum = sum + all_quizzes.rows[i].total_attempts; %>
+        <% } %>
+        <p>Total Students Attempted: <%= sum %></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+</body>
+</html>

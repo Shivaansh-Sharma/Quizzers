@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Quizzes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Public Quizzes</h1>
+  </header>
+  <main>
+    <section id="public-quizzes-container" style="max-height: 400px; overflow-y: auto;">
+      <ul>
+        <!-- <li>Quiz 1: General Knowledge</li>
+        <li>Quiz 2: Science Facts</li>
+        <li>Quiz 3: History Trivia</li> -->
+        <%if(quiz_data.rowcount===0){%>
+            <li>There are no public Quizzes currently!</li>
+        <%}else{%>
+            <%for(var i=0; i<quiz_data.rows.length; i++){%>
+                <li>
+                  <form action="/quizcode" method="post">
+                    Quiz Name: <%=quiz_data.rows[i]["quiz_name"]%>  <br> Subject: <%=quiz_data.rows[i]["subject"]%> <br>  Ratings: <%=quiz_data.rows[i]["reviews"]%> <br> Total student attempts: <%=quiz_data.rows[i]["total_attempts"]%> 
+                    <button type="submit" name="quiz-code" value="<%=quiz_data.rows[i]["id"]%>"> Start Quiz </button>
+                  </form>
+                </li>
+                <br />
+            <%}%>
+        <%}%>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Quizzers. All rights reserved.</p>
+  </footer>
+</body>
+</html>

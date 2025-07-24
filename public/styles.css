@@ -1,0 +1,355 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #101010;
+  color: #e2e2e2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  font-size: 18px;
+  overflow-y: auto;
+}
+
+/* Main Container */
+main {
+  width: 100%;
+  max-width: 1200px;
+  background: #212121;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Header */
+header {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+  color: #98FF98; /* Mint green */
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 4px solid #98FF98; /* Mint green */
+}
+
+/* Section */
+section {
+  background: #262626;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="range"],
+textarea {
+  width: 100%;
+  padding: 18px;
+  margin: 12px 0;
+  background: #333;
+  border: 2px solid #555;
+  color: #f2f2f2;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(45deg, #98FF98, #00b8d4);
+  color: #101010;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #00b8d4, #98FF98);
+}
+
+/* Add gaps between buttons in Teacher Dashboard */
+.teachers, .dashboard {
+  display: flex;
+  flex-direction: column; /* Align buttons vertically */
+  gap: 20px; /* Add spacing between buttons */
+  text-align: center; /* Center-align text */
+}
+
+/* Add gap between Add Option and Remove Option buttons */
+.quiz-options {
+  display: flex;
+  flex-direction: row; /* Align buttons horizontally */
+  gap: 20px; /* Add spacing between the buttons */
+  justify-content: center; /* Center the buttons */
+}
+
+.quiz-options button {
+  flex: 1; /* Make buttons equal in width (optional) */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 16px;
+  padding: 15px;
+  background: #212121;
+  color: #ffffff;
+  border-top: 2px solid #98FF98; /* Mint green */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+/* Links */
+a {
+  color: #98FF98; /* Mint green */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #00b8d4;
+  text-decoration: underline;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: #333;
+  color: #f2f2f2;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #555;
+}
+
+table th {
+  background: #212121;
+  color: #98FF98; /* Mint green */
+}
+
+table tr:nth-child(even) {
+  background: #262626;
+}
+
+table tr:hover {
+  background: #333;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Fieldsets */
+fieldset {
+  border: 2px solid #555;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+legend {
+  padding: 0 10px;
+  font-size: 20px;
+  color: #98FF98; /* Mint green */
+  font-weight: bold;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #98FF98; /* Mint green */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00b8d4;
+}
+
+::-webkit-scrollbar-corner {
+  background: #333;
+}
+
+/* Switch Container */
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  color: #e2e2e2;
+}
+
+/* Switch Wrapper */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide Default Checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider (Switch Background) */
+.switch .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #555;
+  border-radius: 30px;
+  transition: background-color 0.3s;
+}
+
+/* Slider Circle */
+.switch .slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 5px;
+  bottom: 5px;
+  background-color: #ede9e9; /* Ball color */
+  border-radius: 50%;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Checked State - For the switch background */
+.switch input:checked + .slider {
+  background-color: #98FF98; /* Mint green */
+}
+
+/* Checked State - For the ball */
+.switch input:checked + .slider::before {
+  transform: translateX(30px); /* Moves the ball to the right */
+  background-color: #00b8d4; /* Green ball when checked */
+}
+
+/* Remove bullet points and maintain gap */
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+ul li, ol li {
+  margin-bottom: 10px; /* Add space between list items */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  /* Adjust Header */
+  header {
+    font-size: 30px; /* Smaller font size for mobile */
+    padding-bottom: 10px;
+  }
+
+  /* Main Container */
+  main {
+    padding: 20px; /* Reduced padding on mobile */
+    gap: 30px;
+  }
+
+  /* Buttons */
+  button {
+    font-size: 18px; /* Smaller button text for mobile */
+  }
+
+  /* Section */
+  section {
+    padding: 20px;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Adjust input fields for smaller screens */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  input[type="range"],
+  textarea {
+    padding: 12px; /* Smaller padding on mobile */
+  }
+
+  /* Adjust Switch Container */
+  .switch-container {
+    font-size: 16px; /* Smaller font size for mobile */
+  }
+
+  /* Adjust quiz options layout */
+  .quiz-options {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    gap: 10px;
+  }
+
+  /* Adjust footer for mobile */
+  footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+/* Center Align the "Students" Section */
+.heading-student{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Ensure text is centered */
+}
+
+.remove-option-button {
+  margin-bottom: 10px;  /* This adds a 10px gap above the remove button */
+}
