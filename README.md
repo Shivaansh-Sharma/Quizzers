@@ -17,7 +17,7 @@
 
 ## 📁 Project Structure
 
-Simon_Game/
+Quizzers/
 
 ├── node_modules             → Project dependencies  
 ├── public/                  → Static Files (HTML, CSS, JavaScript)  
@@ -45,10 +45,10 @@ Simon_Game/
 
 ## 👨‍💻 Author
 
-**Shivaansh Sharma**  - Frontend 
+**Shivaansh Sharma**  - Frontend   
 GitHub: https://github.com/Shivaansh-Sharma
 
-**Mehul Kala** - Backend 
+**Mehul Kala** - Backend   
 GitHub: https://github.com/mehulkala
 ---
 
