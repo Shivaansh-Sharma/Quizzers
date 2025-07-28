@@ -22,10 +22,10 @@ Quizzers/
 ├── node_modules             → Project dependencies  
 ├── public/                  → Static Files (HTML, CSS, JavaScript)  
 ├── views/                   → EJS Files (Backend)  
-├── README.md                → Project documentation 
-├── demo_video.mp4           → Project Demonstration Video
-├── index.js                 → Server
-├── package.json             → Project Metadata  
+├── README.md                → Project documentation  
+├── demo_video.mp4           → Project Demonstration Video  
+├── index.js                 → Server  
+├── package.json             → Project Metadata    
 └── package-lock.json        → Auto-generated lockfile for consistent installs  
 
 
@@ -35,7 +35,7 @@ Quizzers/
 
 - 🎯 Interactive quizzes with real-time validation  
 - 📊 Score tracking and result display  
-- 📱 Mobile-responsive user interface  
+- 📱   user interface  
 - 🌐 Server-side rendering with EJS  
 - 📂 Clean and organized codebase 
 
