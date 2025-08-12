@@ -2,7 +2,7 @@
 
 **Quizzers** is a full-stack quiz web application built using **Node.js**, **Express.js**, **EJS**, and **PostgreSQL**. It offers a smooth and responsive user experience for taking quizzes, getting real-time feedback, and tracking scores. The project follows a clean modular structure and is deployment-ready.
 
-🔗 Live Demo: Soon
+🔗 Live Demo: https://quizzers-an86.onrender.com
 
 ---
 
@@ -48,8 +48,15 @@ Quizzers/
 **Shivaansh Sharma**  - Frontend   
 GitHub: https://github.com/Shivaansh-Sharma
 
-**Mehul Kala** - Backend   
+**Mehul Kala**  - Backend   
 GitHub: https://github.com/mehulkala
+
+**Harman Singh**  - Database   
+GitHub: https://github.com/bhangu1335
+
+**Feroz Ahmad**  - Structure & Design   
+GitHub: https://github.com/phroze846
+
 ---
 
 ## ⭐ Support
