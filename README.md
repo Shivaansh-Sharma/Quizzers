@@ -8,9 +8,9 @@
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Node.js, Express.js ⚙️  
-- **Frontend**: EJS, HTML, CSS, JavaScript 🎨  
-- **Database**: PostgreSQL 🐘
+- **Backend**: Node.js, Express.js, EJS   
+- **Frontend**: HTML, CSS, JavaScript   
+- **Database**: PostgreSQL 
 
 ---
 
