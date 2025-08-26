@@ -1,6 +1,6 @@
 # 🎮 Quizzers
 
-**Quizzers** is a full-stack quiz web application built using **Node.js**, **Express.js**, **EJS**, and **PostgreSQL**. It offers a smooth and responsive user experience for taking quizzes, getting real-time feedback, and tracking scores. The project follows a clean modular structure and is deployment-ready.
+**Quizzers** is a full-stack quiz web application built using **Node.js**, **Express.js**, **EJS**, and **PostgreSQL**. It offers a smooth and responsive user experience for taking quizzes, getting real-time feedback, and tracking scores. The project follows a clean modular structure and is deployed.
 
 🔗 Live Demo: https://quizzers-an86.onrender.com
 
